@@ -185,7 +185,13 @@ def searchableText(obj):
     text_list = []
     tiles = obj.get_tiles()
     for tile in tiles:
-        tile_obj = obj.restrictedTraverse('@@{0}/{1}'.format(tile['type'], tile['id']))
+        try:
+            tile_obj = obj.restrictedTraverse(
+                    '@@{0}/{1}'.format(tile['type'], tile['id']))
+        except Exception:
+            tile_annot_id = 'plone.tiles.data.' + tile['id']
+            tile_obj = obj.__annotations__.get(tile_annot_id, None)
+
         searchable = queryAdapter(tile_obj, ISearchableText)
         if searchable:
             text_list.append(searchable.SearchableText())

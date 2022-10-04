@@ -6,6 +6,12 @@ There's a frood who really knows where his towel is.
 1.2b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Fix unauthorized error when accessing tiles in searchableText indexer.
+  [GhitaB]
+
+- Use absolute url for tiles data url. This makes it compatible with eea.pdf.
+  [Petchesi-Iulian]
+
 - Enforce usage of plone.api >= 1.4.11 to avoid `TypeError` while running upgrade step to profile 14.
   [hvelarde]
 
